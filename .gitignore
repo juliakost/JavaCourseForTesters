@@ -86,10 +86,6 @@ Temporary Items
 .apdisk
 
 
-.idea/ 
-*.iml
-target
-.allure
 
 .gradle
 build/
@@ -97,3 +93,4 @@ build/
 gradle-app.setting
 
 !gradle-wrapper.jar
+.idea/workspace.xml
