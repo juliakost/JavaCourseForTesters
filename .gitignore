@@ -90,3 +90,10 @@ Temporary Items
 *.iml
 target
 .allure
+
+.gradle
+build/
+
+gradle-app.setting
+
+!gradle-wrapper.jar
