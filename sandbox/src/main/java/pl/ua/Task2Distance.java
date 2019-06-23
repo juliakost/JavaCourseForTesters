@@ -3,8 +3,8 @@ package pl.ua;
 public class Task2Distance {
   public static void main(String[] args) {
 
-    Point p1 = new Point(8, 2);
-    Point p2 = new Point(2, 0);
+    Point p1 = new Point(0, 13);
+    Point p2 = new Point(0, 5);
 
     System.out.println("The distance between points is: " + p1.distance(p2));
   }
