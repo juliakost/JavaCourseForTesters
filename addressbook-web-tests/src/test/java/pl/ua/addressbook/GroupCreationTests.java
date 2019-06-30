@@ -36,7 +36,7 @@ public class GroupCreationTests {
   public void testGroupCreation() throws Exception {
     goToGroupPage();
     initGroupCreation();
-    fillGroupForm("test3", "header3", "footer3");
+    fillGroupForm(new GroupData("test3", "header3", "footer3"));
     submitGroupCreation();
     returnToGroupPage();
   }
@@ -57,16 +57,16 @@ public class GroupCreationTests {
     wd.findElement(By.linkText("groups")).click();
   }
 
-  private void fillGroupForm(String name, String header, String footer) {
+  private void fillGroupForm(GroupData groupData) {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
-    wd.findElement(By.name("group_name")).sendKeys(name);
+    wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
     wd.findElement(By.name("group_header")).click();
     wd.findElement(By.name("group_header")).clear();
-    wd.findElement(By.name("group_header")).sendKeys(header);
+    wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
     wd.findElement(By.name("group_footer")).click();
     wd.findElement(By.name("group_footer")).clear();
-    wd.findElement(By.name("group_footer")).sendKeys(footer);
+    wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
   }
 
   @AfterMethod(alwaysRun = true)
@@ -91,5 +91,4 @@ public class GroupCreationTests {
       return false;
     }
   }
-
 }
