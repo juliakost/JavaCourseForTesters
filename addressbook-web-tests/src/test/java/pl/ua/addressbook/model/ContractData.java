@@ -1,4 +1,4 @@
-package pl.ua.addressbook;
+package pl.ua.addressbook.model;
 
 public class ContractData {
   private final String firstname;

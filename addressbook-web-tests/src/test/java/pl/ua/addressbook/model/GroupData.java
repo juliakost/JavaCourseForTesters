@@ -1,4 +1,4 @@
-package pl.ua.addressbook;
+package pl.ua.addressbook.model;
 
 public class GroupData {
   private final String name;
