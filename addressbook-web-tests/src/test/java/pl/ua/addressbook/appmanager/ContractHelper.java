@@ -2,45 +2,40 @@ package pl.ua.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 import pl.ua.addressbook.model.ContractData;
 
-public class ContractHelper {
-  private WebDriver wd;
+public class ContractHelper extends HelperBase {
 
   public ContractHelper(WebDriver wd) {
-    this.wd = wd;
+    super(wd);
   }
 
   public void submitContractCreation() {
-    wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    click(By.xpath("(//input[@name='submit'])[2]"));
   }
 
   public void fillContactForm(ContractData contractData) {
-    wd.findElement(By.name("firstname")).sendKeys(contractData.getFirstname());
-    wd.findElement(By.name("lastname")).sendKeys(contractData.getLastname());
-    wd.findElement(By.name("nickname")).sendKeys(contractData.getNickname());
-    wd.findElement(By.name("company")).sendKeys(contractData.getCompany());
-    wd.findElement(By.name("address")).sendKeys(contractData.getAddress());
-    wd.findElement(By.name("home")).sendKeys(contractData.getHomephone());
-    wd.findElement(By.name("mobile")).sendKeys(contractData.getMobilephone());
-    wd.findElement(By.name("work")).sendKeys(contractData.getWorkphone());
-    wd.findElement(By.name("fax")).sendKeys(contractData.getFax());
-    wd.findElement(By.name("email")).sendKeys(contractData.getEmail());
-    wd.findElement(By.name("bday")).click();
-    new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contractData.getBday());
-    wd.findElement(By.name("bmonth")).click();
-    new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(contractData.getBmonth());
-    wd.findElement(By.name("byear")).sendKeys(contractData.getByear());
-    wd.findElement(By.name("new_group")).click();
-    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contractData.getGroup());
+    type(By.name("firstname"),contractData.getFirstname());
+    type(By.name("lastname"),contractData.getLastname());
+    type(By.name("nickname"),contractData.getNickname());
+    type(By.name("company"),contractData.getCompany());
+    type(By.name("address"),contractData.getAddress());
+    type(By.name("home"),contractData.getHomephone());
+    type(By.name("mobile"),contractData.getMobilephone());
+    type(By.name("work"),contractData.getWorkphone());
+    type(By.name("fax"),contractData.getFax());
+    type(By.name("email"),contractData.getEmail());
+    select(By.name("bday"),contractData.getBday());
+    select(By.name("bmonth"), contractData.getBmonth());
+    type(By.name("byear"), contractData.getByear());
+    select(By.name("new_group"), contractData.getGroup());
   }
 
   public void initContactCreation() {
-    wd.findElement(By.linkText("add new")).click();
+    click(By.linkText("add new"));
   }
 
   public void returnToHomePage() {
-    wd.findElement(By.linkText("home page")).click();
+    click(By.linkText("home page"));
   }
 }
