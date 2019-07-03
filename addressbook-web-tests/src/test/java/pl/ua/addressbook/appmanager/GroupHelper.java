@@ -1,6 +1,5 @@
 package pl.ua.addressbook.appmanager;
 
-import com.sun.javafx.binding.ExpressionHelperBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pl.ua.addressbook.model.GroupData;
