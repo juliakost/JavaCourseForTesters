@@ -14,9 +14,8 @@ public class ContractData {
   private final String byear;
   private final String bday;
   private final String bmonth;
-  private final String group;
 
-  public ContractData(String firstname, String lastname, String nickname, String company, String address, String homephone, String mobilephone, String workphone, String fax, String email, String byear, String bday, String bmonth, String group) {
+  public ContractData(String firstname, String lastname, String nickname, String company, String address, String homephone, String mobilephone, String workphone, String fax, String email, String byear, String bday, String bmonth) {
     this.firstname = firstname;
     this.lastname = lastname;
     this.nickname = nickname;
@@ -30,7 +29,6 @@ public class ContractData {
     this.byear = byear;
     this.bday = bday;
     this.bmonth = bmonth;
-    this.group = group;
   }
 
   public String getFirstname() {
@@ -85,7 +83,4 @@ public class ContractData {
     return bmonth;
   }
 
-  public String getGroup() {
-    return group;
-  }
 }

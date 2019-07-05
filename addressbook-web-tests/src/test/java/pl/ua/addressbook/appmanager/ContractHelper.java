@@ -15,20 +15,19 @@ public class ContractHelper extends HelperBase {
   }
 
   public void fillContactForm(ContractData contractData) {
-    type(By.name("firstname"),contractData.getFirstname());
-    type(By.name("lastname"),contractData.getLastname());
-    type(By.name("nickname"),contractData.getNickname());
-    type(By.name("company"),contractData.getCompany());
-    type(By.name("address"),contractData.getAddress());
-    type(By.name("home"),contractData.getHomephone());
-    type(By.name("mobile"),contractData.getMobilephone());
-    type(By.name("work"),contractData.getWorkphone());
-    type(By.name("fax"),contractData.getFax());
-    type(By.name("email"),contractData.getEmail());
-    select(By.name("bday"),contractData.getBday());
+    type(By.name("firstname"), contractData.getFirstname());
+    type(By.name("lastname"), contractData.getLastname());
+    type(By.name("nickname"), contractData.getNickname());
+    type(By.name("company"), contractData.getCompany());
+    type(By.name("address"), contractData.getAddress());
+    type(By.name("home"), contractData.getHomephone());
+    type(By.name("mobile"), contractData.getMobilephone());
+    type(By.name("work"), contractData.getWorkphone());
+    type(By.name("fax"), contractData.getFax());
+    type(By.name("email"), contractData.getEmail());
+    select(By.name("bday"), contractData.getBday());
     select(By.name("bmonth"), contractData.getBmonth());
     type(By.name("byear"), contractData.getByear());
-    select(By.name("new_group"), contractData.getGroup());
   }
 
   public void initContactCreation() {
@@ -38,4 +37,26 @@ public class ContractHelper extends HelperBase {
   public void returnToHomePage() {
     click(By.linkText("home page"));
   }
+
+  public void selectContract() {
+    click(By.name("selected[]"));
+  }
+
+  public void initContractModification() {
+    click(By.cssSelector("img[alt=\"Edit\"]"));
+
+  }
+
+  public void submitContractModification() {
+    click(By.xpath("(//input[@name='update'])[2]"));
+  }
+
+  public void initContractDeletion() {
+    click(By.xpath("//input[@value='Delete']"));
+  }
+
+  public void confirmOnAlert() {
+    wd.switchTo().alert().accept();
+  }
 }
+
