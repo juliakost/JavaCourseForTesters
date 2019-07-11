@@ -69,7 +69,6 @@ public class ContractHelper extends HelperBase {
     fillContactForm(contract);
     submitContractCreation();
     returnToHomePage();
-
   }
 }
 

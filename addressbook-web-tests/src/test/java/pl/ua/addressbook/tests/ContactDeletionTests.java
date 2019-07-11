@@ -1,6 +1,5 @@
 package pl.ua.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.ua.addressbook.model.ContractData;
 
