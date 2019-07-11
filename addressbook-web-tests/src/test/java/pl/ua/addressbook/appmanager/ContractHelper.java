@@ -2,6 +2,7 @@ package pl.ua.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import pl.ua.addressbook.model.ContractData;
 
 public class ContractHelper extends HelperBase {
@@ -57,6 +58,18 @@ public class ContractHelper extends HelperBase {
 
   public void confirmOnAlert() {
     wd.switchTo().alert().accept();
+  }
+
+  public boolean isContactPresent() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  public void createContact(ContractData contract) {
+    initContactCreation();
+    fillContactForm(contract);
+    submitContractCreation();
+    returnToHomePage();
+
   }
 }
 

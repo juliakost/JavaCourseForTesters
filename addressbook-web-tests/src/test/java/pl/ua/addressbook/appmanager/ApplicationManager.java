@@ -1,5 +1,7 @@
 package pl.ua.addressbook.appmanager;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -31,7 +33,7 @@ public class ApplicationManager {
     }
 
 
-    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
     contractHelper = new ContractHelper(wd);
@@ -55,4 +57,6 @@ public class ApplicationManager {
   public ContractHelper getContractHelper() {
     return contractHelper;
   }
+
+
 }
