@@ -32,7 +32,7 @@ public class GroupHelper extends HelperBase {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
-  public void selectGroup( int index) {
+  public void selectGroup(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
@@ -65,10 +65,10 @@ public class GroupHelper extends HelperBase {
 
   public List<GroupData> getGroupList() {
     List<GroupData> groups = new ArrayList<>();
-    List <WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-    for (WebElement element: elements) {
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    for (WebElement element : elements) {
       String groupName = element.getText();
-      String id = element.findElement(By.tagName("input")).getAttribute("value");
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       GroupData group = new GroupData(id, groupName, null, null);
       groups.add(group);
     }
