@@ -8,8 +8,8 @@ public class GroupDeletionTests extends TestBase {
 
   @Test
   public void testCroupDeletion() {
-    int before = app.getGroupHelper().getGroupCount();
     app.getNavigationHelper().goToGroupPage();
+    int before = app.getGroupHelper().getGroupCount();
     if (!app.getGroupHelper().isGroupPresent()) {
       app.getGroupHelper().createGroup(new GroupData("final group2", "header3", "footer3"));
     }
