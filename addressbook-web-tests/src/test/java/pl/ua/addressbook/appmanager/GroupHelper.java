@@ -2,7 +2,11 @@ package pl.ua.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pl.ua.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
@@ -28,8 +32,8 @@ public class GroupHelper extends HelperBase {
     type(By.name("group_footer"), groupData.getFooter());
   }
 
-  public void selectGroup() {
-    click(By.name("selected[]"));
+  public void selectGroup( int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void initGroupModification() {
@@ -57,5 +61,16 @@ public class GroupHelper extends HelperBase {
 
   public int getGroupCount() {
     return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public List<GroupData> getGroupList() {
+    List<GroupData> groups = new ArrayList<>();
+    List <WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    for (WebElement element: elements) {
+      String groupName = element.getText();
+      GroupData group = new GroupData(groupName, null, null);
+      groups.add(group);
+    }
+    return groups;
   }
 }

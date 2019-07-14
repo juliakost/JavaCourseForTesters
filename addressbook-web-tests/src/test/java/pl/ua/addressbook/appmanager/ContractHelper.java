@@ -39,8 +39,8 @@ public class ContractHelper extends HelperBase {
     click(By.linkText("home page"));
   }
 
-  public void selectContract() {
-    click(By.name("selected[]"));
+  public void selectContract(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void initContractModification() {
