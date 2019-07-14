@@ -11,11 +11,11 @@ public class GroupDeletionTests extends TestBase {
   @Test
   public void testCroupDeletion() {
     app.getNavigationHelper().goToGroupPage();
-    List<GroupData> before = app.getGroupHelper().getGroupList();
     if (!app.getGroupHelper().isGroupPresent()) {
       app.getGroupHelper().createGroup(new GroupData("final group2", "header3", "footer3"));
     }
 
+    List<GroupData> before = app.getGroupHelper().getGroupList();
     app.getGroupHelper().selectGroup(before.size() -1);
     app.getGroupHelper().deleteGroup();
     app.getGroupHelper().returnToGroupPage();
