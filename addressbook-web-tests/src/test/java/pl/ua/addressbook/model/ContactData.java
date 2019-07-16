@@ -1,6 +1,6 @@
 package pl.ua.addressbook.model;
 
-public class ContractData {
+public class ContactData {
   private final String firstname;
   private final String lastname;
   private final String nickname;
@@ -15,7 +15,7 @@ public class ContractData {
   private final String bday;
   private final String bmonth;
 
-  public ContractData(String firstname, String lastname, String nickname, String company, String address, String homephone, String mobilephone, String workphone, String fax, String email, String byear, String bday, String bmonth) {
+  public ContactData(String firstname, String lastname, String nickname, String company, String address, String homephone, String mobilephone, String workphone, String fax, String email, String byear, String bday, String bmonth) {
     this.firstname = firstname;
     this.lastname = lastname;
     this.nickname = nickname;
