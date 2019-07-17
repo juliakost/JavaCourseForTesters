@@ -3,16 +3,13 @@ package pl.ua.addressbook.model;
 import java.util.Objects;
 
 public class GroupData {
-  public void setId(int id) {
-    this.id = id;
-  }
 
   private int id;
   private final String name;
   private final String header;
   private final String footer;
 
-  public GroupData( String name, String header, String footer) {
+  public GroupData(String name, String header, String footer) {
     this.id = Integer.MAX_VALUE;
     this.name = name;
     this.header = header;
@@ -41,6 +38,10 @@ public class GroupData {
 
   public String getFooter() {
     return footer;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   @Override
