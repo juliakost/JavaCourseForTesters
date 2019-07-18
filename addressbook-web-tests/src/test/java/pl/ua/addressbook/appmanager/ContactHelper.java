@@ -47,8 +47,8 @@ public class ContactHelper extends HelperBase {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
-  public void initContractModification() {
-    click(By.cssSelector("img[alt=\"Edit\"]"));
+  public void initContractModification( int i) {
+    wd.findElements(By.xpath("//img[@alt='Edit']")).get(i).click();
 
   }
 

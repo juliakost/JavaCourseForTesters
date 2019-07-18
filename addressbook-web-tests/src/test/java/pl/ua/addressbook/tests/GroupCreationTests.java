@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import pl.ua.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 
