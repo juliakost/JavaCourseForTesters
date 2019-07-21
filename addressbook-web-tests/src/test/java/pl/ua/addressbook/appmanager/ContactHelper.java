@@ -43,7 +43,7 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("home page"));
   }
 
-  public void modifyContact(List<ContactData> before, ContactData contact) {
+  public void modify(List<ContactData> before, ContactData contact) {
     selectContract(before.size() - 1);
     initContractModification(before.size() - 1);
     fillContactForm(contact);
@@ -76,18 +76,24 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public void createContact(ContactData contract) {
+  public void create(ContactData contract) {
     initContactCreation();
     fillContactForm(contract);
     submitContractCreation();
     returnToHomePage();
   }
 
+  public void  delete(int index) {
+    selectContract(index);
+    initContractDeletion();
+    confirmOnAlert();
+  }
+
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<>();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
     for (WebElement element : elements) {

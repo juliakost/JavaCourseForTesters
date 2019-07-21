@@ -24,7 +24,6 @@ public class GroupModificationTests extends TestBase {
     List<GroupData> before = app.group().list();
     int index = before.size() - 1;
     GroupData group = new GroupData(before.get(before.size() - 1).getId(), "name", "header", "foter");
-
     app.group().modify(index, group);
     List<GroupData> after = app.group().list();
     Assert.assertEquals(after.size(), before.size());
