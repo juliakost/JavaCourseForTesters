@@ -1,6 +1,7 @@
 package pl.ua.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pl.ua.addressbook.model.ContactData;
@@ -46,9 +47,12 @@ public class ContactHelper extends HelperBase {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
+  public void selectContractById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id +"']")).click();
+  }
+
   public void initContractModification(int i) {
     wd.findElements(By.xpath("//img[@alt='Edit']")).get(i).click();
-
   }
 
   public void submitContractModification() {
@@ -76,6 +80,12 @@ public class ContactHelper extends HelperBase {
 
   public void delete(int index) {
     selectContract(index);
+    initContractDeletion();
+    confirmOnAlert();
+  }
+
+  public void delete(ContactData contact) {
+    selectContractById(contact.getId());
     initContractDeletion();
     confirmOnAlert();
   }

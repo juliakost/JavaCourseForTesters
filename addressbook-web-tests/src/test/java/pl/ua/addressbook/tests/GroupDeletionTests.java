@@ -4,8 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.ua.addressbook.model.GroupData;
-
-import java.util.List;
+import java.util.Set;
 
 public class GroupDeletionTests extends TestBase {
 
@@ -14,19 +13,19 @@ public class GroupDeletionTests extends TestBase {
     app.goTo().groupPage();
     if (app.group().list().size() == 0) {
       app.group().create(new GroupData()
-              .withName("delete group").withFooter("delete footer").withHeader("delete header"));
+              .withName("delete group name").withFooter("delete footer").withHeader("delete header"));
     }
   }
 
   @Test
   public void testCroupDeletion() {
-    List<GroupData> before = app.group().list();
-    int index = before.size() - 1;
-    app.group().delete(index);
-    List<GroupData> after = app.group().list();
+    Set<GroupData> before = app.group().all();
+    GroupData deletedGroup = before.iterator().next();
+    app.group().delete(deletedGroup);
+    Set<GroupData> after = app.group().all();
     Assert.assertEquals(after.size(), before.size() - 1);
 
-    before.remove(index);
+    before.remove(deletedGroup);
     Assert.assertEquals(before, after);
   }
 }

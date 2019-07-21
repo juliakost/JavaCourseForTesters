@@ -3,9 +3,6 @@ package pl.ua.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pl.ua.addressbook.model.ContactData;
-
-import java.util.Comparator;
-import java.util.List;
 import java.util.Set;
 
 public class ContactCreationTests extends TestBase {
