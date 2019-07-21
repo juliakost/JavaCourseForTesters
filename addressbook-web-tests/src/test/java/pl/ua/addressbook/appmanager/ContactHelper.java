@@ -1,12 +1,9 @@
 package pl.ua.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pl.ua.addressbook.model.ContactData;
-
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,9 +32,9 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("home page"));
   }
 
-  public void modify(List<ContactData> before, ContactData contact) {
-    selectContract(before.size() - 1);
-    initContractModification(before.size() - 1);
+  public void modify(ContactData contact) {
+    selectContractById(contact.getId());
+    initContractModificationById(contact.getId());
     fillContactForm(contact);
     submitContractModification();
     returnToHomePage();
@@ -48,11 +45,12 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContractById(int id) {
-    wd.findElement(By.cssSelector("input[value='" + id +"']")).click();
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
-  public void initContractModification(int i) {
-    wd.findElements(By.xpath("//img[@alt='Edit']")).get(i).click();
+  public void initContractModificationById(int id) {
+    wd.findElement(By.xpath("//a[@href='edit.php?id=" + id + "']")).click();
+
   }
 
   public void submitContractModification() {
@@ -78,12 +76,6 @@ public class ContactHelper extends HelperBase {
     returnToHomePage();
   }
 
-  public void delete(int index) {
-    selectContract(index);
-    initContractDeletion();
-    confirmOnAlert();
-  }
-
   public void delete(ContactData contact) {
     selectContractById(contact.getId());
     initContractDeletion();
@@ -92,18 +84,6 @@ public class ContactHelper extends HelperBase {
 
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
-  }
-
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<>();
-    List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
-    for (WebElement element : elements) {
-      String firstname = element.findElement(By.xpath("td[3]")).getText();
-      String lastname = element.findElement(By.xpath("td[2]")).getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
-    }
-    return contacts;
   }
 
   public Set<ContactData> all() {
@@ -118,4 +98,3 @@ public class ContactHelper extends HelperBase {
     return contacts;
   }
 }
-
