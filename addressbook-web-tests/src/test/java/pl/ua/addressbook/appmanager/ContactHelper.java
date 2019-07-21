@@ -43,6 +43,14 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("home page"));
   }
 
+  public void modifyContact(List<ContactData> before, ContactData contact) {
+    selectContract(before.size() - 1);
+    initContractModification(before.size() - 1);
+    fillContactForm(contact);
+    submitContractModification();
+    returnToHomePage();
+  }
+
   public void selectContract(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
