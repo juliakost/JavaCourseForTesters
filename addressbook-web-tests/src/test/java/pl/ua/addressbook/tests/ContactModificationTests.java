@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.ua.addressbook.model.ContactData;
-import java.util.Comparator;
 import java.util.Set;
 
 public class ContactModificationTests extends TestBase {
