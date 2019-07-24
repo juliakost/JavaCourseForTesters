@@ -5,8 +5,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pl.ua.addressbook.model.ContactData;
 import pl.ua.addressbook.model.Contacts;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.*;
+
 
 public class ContactDeletionTests extends TestBase {
 
@@ -24,8 +25,8 @@ public class ContactDeletionTests extends TestBase {
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
     Thread.sleep(5000);
+    assertThat(app.contact().count(), equalTo (before.size() - 1));
     Contacts after = app.contact().all();
-    assertEquals(after.size(), before.size() - 1);
     assertThat(after, CoreMatchers.equalTo(before.without(deletedContact)));
   }
 }

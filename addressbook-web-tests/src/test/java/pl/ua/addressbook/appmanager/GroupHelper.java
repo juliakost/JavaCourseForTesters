@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pl.ua.addressbook.model.GroupData;
 import pl.ua.addressbook.model.Groups;
-
 import java.util.List;
+
 
 public class GroupHelper extends HelperBase {
 
@@ -87,6 +87,7 @@ public class GroupHelper extends HelperBase {
     if (groupCache != null) {
       return new Groups(groupCache);
     }
+
     groupCache = new Groups();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
