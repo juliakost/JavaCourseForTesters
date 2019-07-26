@@ -22,6 +22,13 @@ public class ContactHelper extends HelperBase {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
+    type(By.name("home"), contactData.getHomephone());
+    type(By.name("mobile"), contactData.getMobilephone());
+    type(By.name("work"), contactData.getWorkphone());
+    type(By.name("address"), contactData.getAddress());
+    type(By.name("email"), contactData.getEmail());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
   }
 
   public void initContactCreation() {
@@ -97,14 +104,19 @@ public class ContactHelper extends HelperBase {
     if (contactCache != null) {
       return new Contacts(contactCache);
     }
-
     contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
     for (WebElement element : elements) {
-      String firstname = element.findElement(By.xpath("td[3]")).getText();
-      String lastname = element.findElement(By.xpath("td[2]")).getText();
+      List<WebElement> cells = element.findElements(By.tagName("td"));
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+      String[] phones = cells.get(5).getText().split("\n");
+      String[] emails = cells.get(4).getText().split("\n");
+      String address = cells.get(3).getText();
+      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
+              .withHomephone(phones[0]).withMobilephone(phones[1]).withWorkphone(phones[2])
+              .withEmail(emails[0]).withEmail2(emails[1]).withEmail3(emails[2]).withAddress(address));
     }
     return contactCache;
   }
