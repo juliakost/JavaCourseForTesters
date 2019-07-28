@@ -1,5 +1,6 @@
 package pl.ua.addressbook.model;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
@@ -23,6 +24,7 @@ public class ContactData {
   private String bmonth;
   private String allPhones;
   private String allEmails;
+  private File photo;
 
   public String getAllEmails() {
     return allEmails;
@@ -123,6 +125,16 @@ public class ContactData {
     this.bmonth = bmonth;
     return this;
   }
+
+  public File getPhoto() {
+    return photo;
+  }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
+
 
   public String getFirstname() {
     return firstname;
