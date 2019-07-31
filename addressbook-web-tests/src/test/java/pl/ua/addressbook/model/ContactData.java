@@ -1,8 +1,12 @@
 package pl.ua.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import java.io.File;
 import java.util.Objects;
 
+
+@XStreamAlias("group")
 public class ContactData {
 
   private int id = Integer.MAX_VALUE;
