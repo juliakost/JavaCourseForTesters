@@ -4,7 +4,6 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import pl.ua.addressbook.model.ContactData;
-import pl.ua.addressbook.model.GroupData;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -51,11 +50,11 @@ public class ContactDataGenerator {
   private static List<ContactData> generateContacts(int count) {
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i = 0; i < count; i++) {
-      contacts.add(new ContactData().withFirstname(String.format("test  %s", i))
-              .withLastname(String.format("lastname  %s", i)).withNickname(String.format("nikname  %s", i))
-              .withHomephone(String.format("111 %s", i)).withMobilephone(String.format("222 %s", i))
-              .withWorkphone(String.format("333 %s", i)).withEmail(String.format("test%s.test@test.com", i))
-              .withAddress(String.format("%s Oakland Ave, 7%s, Florida, 3210$ ", i, i)));
+      contacts.add(new ContactData().withFirstname(String.format("name %s", i))
+              .withLastname(String.format("lastname %s", i)).withNickname(String.format("nikname %s", i))
+              .withHomephone(String.format("111%s", i)).withMobilephone(String.format("222%s", i))
+              .withWorkphone(String.format("333%s", i)).withEmail(String.format("test%s.test@test.com", i))
+              .withAddress(String.format("%s Oakland Ave, 7, Florida, 3210", i)));
     }
     return contacts;
   }
