@@ -1,0 +1,22 @@
+ <list>
+  <contact>
+    <firstname>name 0</firstname>
+    <lastname>lastname 0</lastname>
+    <nickname>nikname 0</nickname>
+    <address>0 Oakland Ave, 7, Florida, 3210</address>
+    <homephone>1110</homephone>
+    <mobilephone>2220</mobilephone>
+    <workphone>3330</workphone>
+    <email>test0.test@test.com</email>
+  </contact>
+  <contact>
+    <firstname>name 1</firstname>
+    <lastname>lastname 1</lastname>
+    <nickname>nikname 1</nickname>
+    <address>1 Oakland Ave, 7, Florida, 3210</address>
+    <homephone>1111</homephone>
+    <mobilephone>2221</mobilephone>
+    <workphone>3331</workphone>
+    <email>test1.test@test.com</email>
+  </contact>
+</list>

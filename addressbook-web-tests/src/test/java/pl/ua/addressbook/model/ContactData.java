@@ -1,16 +1,16 @@
 package pl.ua.addressbook.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import java.io.File;
 import java.util.Objects;
 
 
-@XStreamAlias("group")
+@XStreamAlias("contact")
 public class ContactData {
-
+  @XStreamOmitField
   private int id = Integer.MAX_VALUE;
-
   private String firstname;
   private String lastname;
   private String nickname;
@@ -38,7 +38,6 @@ public class ContactData {
     this.allEmails = allEmails;
     return this;
   }
-
 
   public String getAllPhones() {
     return allPhones;
