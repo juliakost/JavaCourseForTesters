@@ -1,0 +1,20 @@
+[
+  {
+    "firstname": "name 0",
+    "lastname": "lastname 0",
+    "nickname": "nikname 0",
+    "address": "0 Oakland Ave, 7, Florida, 3210",
+    "homephone": "1110",
+    "mobilephone": "2220",
+    "workphone": "3330"
+  },
+  {
+    "firstname": "name 1",
+    "lastname": "lastname 1",
+    "nickname": "nikname 1",
+    "address": "1 Oakland Ave, 7, Florida, 3210",
+    "homephone": "1111",
+    "mobilephone": "2221",
+    "workphone": "3331"
+  }
+]
