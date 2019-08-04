@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pl.ua.addressbook.model.GroupData;
 import pl.ua.addressbook.model.Groups;
+
 import java.util.List;
 
 
@@ -76,8 +77,7 @@ public class GroupHelper extends HelperBase {
     returnToGroupPage();
   }
 
-  public int count()
-  {
+  public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
 

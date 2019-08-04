@@ -6,7 +6,6 @@ import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.*;
 import pl.ua.addressbook.model.ContactData;
 import pl.ua.addressbook.model.Contacts;
-import pl.ua.addressbook.model.GroupData;
 
 import java.io.BufferedReader;
 import java.io.File;

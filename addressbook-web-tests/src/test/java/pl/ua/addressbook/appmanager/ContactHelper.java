@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pl.ua.addressbook.model.ContactData;
 import pl.ua.addressbook.model.Contacts;
-import java.util.List;
 
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -93,8 +93,7 @@ public class ContactHelper extends HelperBase {
     contactCache = null;
   }
 
-  public int count()
-  {
+  public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
