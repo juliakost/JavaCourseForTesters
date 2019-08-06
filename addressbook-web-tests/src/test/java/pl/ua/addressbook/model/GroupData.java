@@ -2,18 +2,19 @@ package pl.ua.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Table;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
 @XStreamAlias("group")
-@DynamicUpdate
-@Table(appliesTo = "group_list")
+@Entity
+@Table(name = "group_list")
 public class GroupData {
   @XStreamOmitField
   @Id
@@ -24,6 +25,7 @@ public class GroupData {
   private String name;
   @Expose
   @Column(name = "group_header")
+  @Type(type = "text")
   private String header;
   @Expose
   @Column(name = "group_footer")
