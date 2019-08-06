@@ -12,7 +12,6 @@ public class DbConnectionTest {
   public void testDbConnection() {
     Connection conn = null;
     try {
-      //jdbc:mysql://localhost/db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       conn = DriverManager.getConnection
               ("jdbc:mysql://localhost:3306/addressbook?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user=root&password=");
       Statement st = conn.createStatement();
