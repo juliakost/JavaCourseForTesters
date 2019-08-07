@@ -11,7 +11,7 @@ import pl.ua.addressbook.model.GroupData;
 
 import java.util.List;
 
-public class HbConnectionTest {
+public class GroupHbConnectionTest {
 
   private SessionFactory sessionFactory;
 
@@ -33,7 +33,7 @@ public class HbConnectionTest {
   }
 
   @Test
-  public void testHbConnection() {
+  public void testGroupHbConnection() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
     List<GroupData> result = session.createQuery( "from GroupData" ).list();
@@ -43,5 +43,4 @@ public class HbConnectionTest {
     session.getTransaction().commit();
     session.close();
   }
-
 }
