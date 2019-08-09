@@ -15,10 +15,11 @@ public class ContactModificationTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     if (app.db().contacts().size() == 0) {
+      File photo = new File("src/test/resources/cat.png");
       app.contact().create(new ContactData().
               withFirstname("modifyContact").withLastname("kostitsyna88").withNickname("yk2").withHomephone("111").withMobilephone("222").withWorkphone("333")
               .withAddress("50-513 Warsaw, Chmelna 45-46")
-              .withEmail("test.test@test.ua").withEmail2("test2.test@test.ua").withEmail3("test3.test@test.ua"));
+              .withEmail("test.test@test.ua").withEmail2("test2.test@test.ua").withEmail3("test3.test@test.ua").withPhoto(photo));
     }
   }
 
