@@ -3,8 +3,12 @@ package pl.ua.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import pl.ua.addressbook.model.ContactData;
 import pl.ua.addressbook.model.Contacts;
+import pl.ua.addressbook.model.GroupData;
+import pl.ua.addressbook.model.Groups;
 
 import java.util.List;
 
@@ -18,7 +22,7 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("(//input[@name='submit'])[2]"));
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
@@ -30,6 +34,13 @@ public class ContactHelper extends HelperBase {
     type(By.name("email"), contactData.getEmail());
     type(By.name("email2"), contactData.getEmail2());
     type(By.name("email3"), contactData.getEmail3());
+
+    if(creation){
+      if(contactData.getGroups().size() > 0){
+        Assert.assertTrue(contactData.getGroups().size()==1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
+    }
   }
 
   public void initContactCreation() {
@@ -71,7 +82,7 @@ public class ContactHelper extends HelperBase {
 
   public void create(ContactData contract) {
     initContactCreation();
-    fillContactForm(contract);
+    fillContactForm(contract, true);
     submitContractCreation();
     contactCache = null;
     returnToHomePage();
@@ -80,10 +91,25 @@ public class ContactHelper extends HelperBase {
   public void modify(ContactData contact) {
     selectContractById(contact.getId());
     initContractModificationById(contact.getId());
-    fillContactForm(contact);
+    fillContactForm(contact, true);
     submitContractModification();
     contactCache = null;
     returnToHomePage();
+  }
+
+  public void addToGroup(ContactData contact, GroupData group) {
+    selectContractById(contact.getId());
+    selectGroupToAddContact(group);
+    initContractAddToGroup();
+    contactCache = null;
+  }
+
+  private void selectGroupToAddContact( GroupData group) {
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+  }
+
+  private void initContractAddToGroup() {
+    click(By.xpath("//input[@value='Add to']"));
   }
 
   public void delete(ContactData contact) {

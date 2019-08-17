@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -90,9 +92,6 @@ public class ContactData {
   @Column(name = "photo")
   @Type(type = "text")
   private String photo;
-
-  @Transient
-  private String group;
 
   public String getAllEmails() {
     return allEmails;
@@ -192,6 +191,15 @@ public class ContactData {
     this.bmonth = bmonth;
     return this;
   }
+
+  public Groups getGroups() {
+    return new Groups (groups);
+  }
+
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable (name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
   public File getPhoto() {
     return new File(photo);
