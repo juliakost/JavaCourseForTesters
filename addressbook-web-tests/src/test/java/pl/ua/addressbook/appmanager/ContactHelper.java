@@ -8,7 +8,6 @@ import org.testng.Assert;
 import pl.ua.addressbook.model.ContactData;
 import pl.ua.addressbook.model.Contacts;
 import pl.ua.addressbook.model.GroupData;
-import pl.ua.addressbook.model.Groups;
 
 import java.util.List;
 
@@ -100,7 +99,14 @@ public class ContactHelper extends HelperBase {
   public void addToGroup(ContactData contact, GroupData group) {
     selectContractById(contact.getId());
     selectGroupToAddContact(group);
-    initContractAddToGroup();
+    initContactAddToGroup();
+    contactCache = null;
+  }
+
+  public void removeFromGroup(ContactData contact, GroupData group) {
+    selectGroupToRemoveContactFrom(group);
+    selectContractById(contact.getId());
+    initContactRemoveFromGroup();
     contactCache = null;
   }
 
@@ -108,8 +114,16 @@ public class ContactHelper extends HelperBase {
     new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
   }
 
-  private void initContractAddToGroup() {
+  private void selectGroupToRemoveContactFrom( GroupData group) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
+  }
+
+  private void initContactAddToGroup() {
     click(By.xpath("//input[@value='Add to']"));
+  }
+
+  private void initContactRemoveFromGroup() {
+    click(By.xpath("//input[@value='Remove from \"groupToAddContact\"']"));
   }
 
   public void delete(ContactData contact) {

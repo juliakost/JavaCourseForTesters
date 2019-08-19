@@ -42,21 +42,24 @@ public class AddContactIntoGroupTests extends TestBase {
         Contacts contactsInGroup = group.getContacts();
         if (!contactsInGroup.contains(contactToGroup)) {
           groupToAdd = group;
-        } else {
-          app.goTo().groupPage();
-          app.group().create(new GroupData()
-                  .withName("groupToAddContact2").withFooter("groupToAddContact_footer2").withHeader("groupToAddContact_header2"));
-          for (GroupData groupNew : app.db().groups()) {
-            if (groupNew.getName().equals("groupToAddContact2")) {
-              groupToAdd = groupNew;
-            }
-          }
+        }
+      }
+      app.goTo().groupPage();
+      app.group().create(new GroupData()
+              .withName("groupToAddContact2").withFooter("groupToAddContact_footer2").withHeader("groupToAddContact_header2"));
+      for (GroupData groupNew : app.db().groups()) {
+        if (groupNew.getName().equals("groupToAddContact2")) {
+          groupToAdd = groupNew;
         }
       }
     }
+
     app.goTo().homePage();
     app.contact().addToGroup(contactToGroup, groupToAdd);
-    Groups contactGroupAfter = contactToGroup.getGroups();
-    assertThat(contactGroupAfter, equalTo(contactGroupsBefore.withAdded(groupToAdd)));
+    Contacts contacts1 = app.db().contacts();
+    ContactData contactToGroup1 = contacts1.iterator().next();
+
+    Groups contactGroupsAfter = contactToGroup1.getGroups();
+    assertThat(contactGroupsAfter, equalTo(contactGroupsBefore.withAdded(groupToAdd)));
   }
 }
