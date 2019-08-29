@@ -20,6 +20,8 @@ public class ApplicationManager {
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
+    private ChangePasswordHelper changePassHelper;
+
 
   public ApplicationManager(String browser) {
 
@@ -30,13 +32,16 @@ public class ApplicationManager {
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-
   }
 
   public void stop() {
     if (wd != null) {
       wd.quit();
     }
+  }
+
+  public SessionHelper sessionHelper() {
+    return new SessionHelper(this);
   }
 
   public HttpSession newSession() {
@@ -67,6 +72,12 @@ public class ApplicationManager {
     }
     return mailHelper;
   }
+
+  public ChangePasswordHelper changePass() {
+    if (changePassHelper == null) {
+      changePassHelper = new ChangePasswordHelper(this);
+    }
+    return changePassHelper;}
 
   public WebDriver getDriver() {
     if (wd == null) {

@@ -1,6 +1,5 @@
 package pl.ua.mantis.model;
 
-import javax.mail.internet.MimeMessage;
 
 public class MailMessage {
   public String to;

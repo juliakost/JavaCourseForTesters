@@ -4,7 +4,7 @@ import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
 import pl.ua.mantis.model.MailMessage;
 
-import javax.mail.MessagingException;
+import javax.mail.*;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.util.List;
@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 public class MailHelper {
   private ApplicationManager app;
+  private Store store;
   private final Wiser wiser;
 
   public MailHelper (ApplicationManager app){
@@ -46,6 +47,27 @@ public class MailHelper {
       return null;
     }
   }
+
+  public void drainEmail(String username, String password) throws MessagingException {
+    Folder inbox = openInbox(username,password);
+    for (Message message: inbox.getMessages()){
+      message.setFlag(Flags.Flag.DELETED, true);
+    }
+    closeFolder(inbox);
+  }
+
+  private void closeFolder(Folder folder) throws MessagingException {
+    folder.close(true);
+    store.close();
+  }
+
+  private Folder openInbox(String username, String password) throws MessagingException {
+    store.connect(username, password);
+    Folder folder = store.getDefaultFolder().getFolder("INBOX");
+    folder.open(Folder.READ_WRITE);
+    return folder;
+  }
+
   public void start() {wiser.start();}
 
   public void stop() {wiser.stop();}
