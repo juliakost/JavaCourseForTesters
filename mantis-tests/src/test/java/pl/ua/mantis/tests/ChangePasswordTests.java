@@ -19,25 +19,25 @@ public class ChangePasswordTests extends TestBase {
   }
 
 
-  @Test
-  public void testChangePassword() throws IOException, MessagingException {
-    String user = "user1";
-
-    app.mail().drainEmail(user, );
-    String newPassword = "password";
-    app.sessionHelper().login("administrator", "root");
-    app.changePass().resetPassword(user);
-    List<MailMessage> mailMessages = app.mail().waitForEmail(1, 10000);
-    String changeLink = findChangeLink(mailMessages, email);
-    app.changePass().finish(changeLink, newPassword);
-  }
-
-  //
-  private String findChangeLink(List<MailMessage> mailMessages, String email) {
-    MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
-    VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
-    return regex.getText(mailMessage.text);
-  }
+//  @Test
+//  public void testChangePassword() throws IOException, MessagingException {
+//    String user = "user1";
+//
+//    app.mail().drainEmail(user,);
+//    String newPassword = "password";
+//    app.sessionHelper().login("administrator", "root");
+//    app.changePass().resetPassword(user);
+//    List<MailMessage> mailMessages = app.mail().waitForEmail(1, 10000);
+//    String changeLink = findChangeLink(mailMessages, email);
+//    app.changePass().finish(changeLink, newPassword);
+//  }
+//
+//  //
+//  private String findChangeLink(List<MailMessage> mailMessages, String email) {
+//    MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
+//    VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
+//    return regex.getText(mailMessage.text);
+//  }
 
 
   @AfterMethod(alwaysRun = true)

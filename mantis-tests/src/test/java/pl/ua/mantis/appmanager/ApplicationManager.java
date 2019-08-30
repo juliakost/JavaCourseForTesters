@@ -20,7 +20,8 @@ public class ApplicationManager {
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
-    private ChangePasswordHelper changePassHelper;
+  private ChangePasswordHelper changePasswordHelper;
+  private SoapHelper soapHelper;
 
 
   public ApplicationManager(String browser) {
@@ -66,18 +67,26 @@ public class ApplicationManager {
     return registrationHelper;
   }
 
-  public MailHelper mail(){
-    if(mailHelper==null){
+  public MailHelper mail() {
+    if (mailHelper == null) {
       mailHelper = new MailHelper(this);
     }
     return mailHelper;
   }
 
   public ChangePasswordHelper changePass() {
-    if (changePassHelper == null) {
-      changePassHelper = new ChangePasswordHelper(this);
+    if (changePasswordHelper == null) {
+      changePasswordHelper = new ChangePasswordHelper(this);
     }
-    return changePassHelper;}
+    return changePasswordHelper;
+  }
+
+  public SoapHelper soap() {
+    if (soapHelper==null) {
+      soapHelper = new SoapHelper(this);
+    }
+    return soapHelper;
+  }
 
   public WebDriver getDriver() {
     if (wd == null) {
