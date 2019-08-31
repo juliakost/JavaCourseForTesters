@@ -30,7 +30,7 @@ public class SoapHelper {
 
   private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
     return new MantisConnectLocator().getMantisConnectPort
-              (new URL("http://localhost/mantisbt-2.21.2/mantisbt-2.21.2/api/soap/mantisconnect.php"));
+            (new URL("http://localhost/mantisbt-2.21.2/mantisbt-2.21.2/api/soap/mantisconnect.php"));
   }
 
   public Issue addIssue(Issue issue) throws MalformedURLException, ServiceException, RemoteException {
@@ -41,7 +41,7 @@ public class SoapHelper {
     issueData.setSummary(issue.getSammary());
     issueData.setDescription(issue.getDescription());
     issueData.setCategory(categories[0]);
-    issueData.setProject(new ObjectRef(BigInteger.valueOf(issue.getProject().getId()), issue.getProject().getName() ));
+    issueData.setProject(new ObjectRef(BigInteger.valueOf(issue.getProject().getId()), issue.getProject().getName()));
     BigInteger issueId = mc.mc_issue_add("administrator", "root", issueData);
     IssueData createdIssueData = mc.mc_issue_get("administrator", "root", issueId);
     return new Issue().withId(createdIssueData.getId().intValue()).withSammary(createdIssueData.getSummary())
@@ -49,6 +49,15 @@ public class SoapHelper {
             .withProject(new Project().withId(createdIssueData.getId().intValue())
                     .withName(createdIssueData.getProject().getName()));
 
+  }
+
+  public Issue getIssue(int issueId) throws MalformedURLException, ServiceException, RemoteException {
+    MantisConnectPortType mc = getMantisConnect();
+    IssueData issueInfo = mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
+    return new Issue().withId(issueInfo.getId().intValue()).withSammary(issueInfo.getSummary())
+            .withDescription(issueInfo.getDescription())
+            .withProject(new Project().withId(issueInfo.getId().intValue())
+                    .withName(issueInfo.getProject().getName())).withStatus(issueInfo.getStatus().getName());
   }
 }
 
