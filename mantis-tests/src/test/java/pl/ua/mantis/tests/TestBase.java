@@ -38,6 +38,12 @@ public class TestBase {
     }
   }
 
+//  public void skipIfNotFixedBugify(int issueId) {
+//    if (isIssueOpenBugify(issueId)) {
+//      throw new SkipException("Ignored because of issue " + issueId)
+//    }
+//  }
+
   @AfterSuite
   public void tearDown() throws Exception {
     app.ftp().restore("config_inc.php.bak", "config_inc.php");
