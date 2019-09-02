@@ -12,6 +12,7 @@ import java.util.Set;
 import static org.testng.Assert.assertEquals;
 
 public class SoapTests extends TestBase {
+
   @Test
   public void testGetProjects() throws MalformedURLException, ServiceException, RemoteException {
     Set<Project> projects = app.soap().getProjects();
@@ -29,5 +30,4 @@ public class SoapTests extends TestBase {
     Issue created = app.soap().addIssue(issue);
     assertEquals(issue.getSammary(), created.getSammary());
   }
-
 }

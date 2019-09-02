@@ -6,6 +6,7 @@ public class IssueJson {
   private int id;
   private String subject;
   private String description;
+  private String status;
 
   @Override
   public boolean equals(Object o) {
@@ -20,6 +21,14 @@ public class IssueJson {
   @Override
   public int hashCode() {
     return Objects.hash(id, subject, description);
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
   public int getId() {
