@@ -29,7 +29,7 @@ public class TestBase {
 
   public boolean isIssueOpen(int issueId) throws RemoteException, ServiceException, MalformedURLException {
     Issue issue = app.soap().getIssue(issueId);
-    if (issue.getStatus() == "closed") {
+    if (issue.getStatus().equals("closed")) {
       return false;
     }
     return true;
@@ -37,7 +37,7 @@ public class TestBase {
 
   public boolean isIssueOpenBugify(int issueIdJson) throws IOException {
     IssueJson issuejson = app.rest().getIssueBugify(issueIdJson);
-    if (issuejson.getStatus() == "closed") {
+    if (issuejson.getStatus().equals("closed")) {
       return false;
     }
     return true;

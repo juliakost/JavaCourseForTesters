@@ -44,8 +44,7 @@ public class RestHelper {
   }
 
   public IssueJson getIssueBugify(int issueIdJson) throws IOException {
-    String json = getExecutor().execute(Request.Post("https://bugify.stqa.ru/api/issues.json")
-            .bodyForm(new BasicNameValuePair("issue_id", Integer.toString(issueIdJson))))
+    String json = getExecutor().execute(Request.Get("https://bugify.stqa.ru/api/issues/" + issueIdJson + ".json"))
             .returnContent().asString();
     JsonElement parsed = new JsonParser().parse(json);
     return new Gson().fromJson(parsed, (new TypeToken<Set<IssueJson>>() {
