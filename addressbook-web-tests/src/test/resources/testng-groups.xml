@@ -5,7 +5,7 @@
         <classes>
             <class name="pl.ua.addressbook.tests.GroupCreationTests"/>
             <class name="pl.ua.addressbook.tests.GroupModificationTests"/>
-            <class name="pl.ua.addressbook.tests.GroupDeletionTests"/>
+            
         </classes>
     </test>
 
