@@ -50,7 +50,7 @@ task testGroups(type: Test) {
 //    }
 //}
 
-//test {
-//    useTestNG()
-//}
+test {
+    useTestNG()
+}
 
