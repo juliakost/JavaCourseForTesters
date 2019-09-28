@@ -20,6 +20,6 @@ public class PointTests {
   @Test
   public void testPoint2() {
     Point p = new Point(-5, 0);
-    Assert.assertEquals(p.distance(new Point(-13, 0)), 8.0);
+    Assert.assertEquals(p.distance(new Point(-13, 0)), 7.0);
   }
 }
