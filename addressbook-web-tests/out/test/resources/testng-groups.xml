@@ -4,8 +4,6 @@
     <test name="Groups">
         <classes>
             <class name="pl.ua.addressbook.tests.GroupModificationTests"/>
-
         </classes>
     </test>
-
 </suite>
