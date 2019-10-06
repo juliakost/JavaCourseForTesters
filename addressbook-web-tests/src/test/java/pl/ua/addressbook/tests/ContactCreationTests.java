@@ -64,7 +64,6 @@ public class ContactCreationTests extends TestBase {
     verifyContactListInUI();
   }
 
-
   @Test
   public void testCurrentDir() {
     File currentDir = new File(".");

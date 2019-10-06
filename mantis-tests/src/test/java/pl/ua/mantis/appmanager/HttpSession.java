@@ -1,6 +1,5 @@
 package pl.ua.mantis.appmanager;
 
-
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;

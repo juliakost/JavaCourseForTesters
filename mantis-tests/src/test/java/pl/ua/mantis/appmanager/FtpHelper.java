@@ -31,7 +31,5 @@ public class FtpHelper {
     ftp.deleteFile(target);
     ftp.rename(backup, target);
     ftp.disconnect();
-
   }
-
 }

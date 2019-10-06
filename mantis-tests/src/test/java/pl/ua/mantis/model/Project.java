@@ -2,6 +2,7 @@ package pl.ua.mantis.model;
 
 public class Project {
   private int id;
+  private String name;
 
   public String getName() {
     return name;
@@ -10,10 +11,7 @@ public class Project {
   public Project withName(String name) {
     this.name = name;
     return this;
-
   }
-
-  private String name;
 
   public int getId() {
     return id;

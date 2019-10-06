@@ -23,6 +23,9 @@ public class ApplicationManager {
   private ChangePasswordHelper changePasswordHelper;
   private SoapHelper soapHelper;
   private RestHelper restHelper;
+  private UserDataHelper userDataHelper;
+  private DbHelper dbHelper;
+
 
 
   public ApplicationManager(String browser) {
@@ -83,14 +86,14 @@ public class ApplicationManager {
   }
 
   public SoapHelper soap() {
-    if (soapHelper==null) {
+    if (soapHelper == null) {
       soapHelper = new SoapHelper(this);
     }
     return soapHelper;
   }
 
   public RestHelper rest() {
-    if (restHelper==null) {
+    if (restHelper == null) {
       restHelper = new RestHelper(this);
     }
     return restHelper;
@@ -108,8 +111,24 @@ public class ApplicationManager {
 
       wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
       wd.get(properties.getProperty("web.baseUrl"));
-
     }
     return wd;
   }
+
+  public UserDataHelper db() {
+    if (userDataHelper==null){
+      userDataHelper=new UserDataHelper(this);
+    }
+    return userDataHelper;
+  }
+
+
+//  public DbHelper dbHelper() {
+//    if (dbHelper==null){
+//      dbHelper=new DbHelper(this);
+//    }
+//    return dbHelper;
+//  }
+
+  public DbHelper dbHelper(){return dbHelper;}
 }

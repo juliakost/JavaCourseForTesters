@@ -7,7 +7,6 @@ public class ChangePasswordHelper extends HelperBase {
     super(app);
   }
 
-
   public void resetPassword(String username) {
     wd.get(app.getProperty("web.baseUrl") + "/manage_user_page.php");
     click(By.linkText(username));
