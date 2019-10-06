@@ -1,6 +1,6 @@
 package pl.ua.mantis.appmanager;
 
-import pl.ua.mantis.model.UserData;
+import pl.ua.mantis.model.User;
 
 public class UserDataHelper {
 
@@ -12,7 +12,7 @@ public class UserDataHelper {
 
   public String getUserPassword(String name) {
     String pass = null;
-    for (UserData userdata : app.dbHelper().usersData()) {
+    for (User userdata : app.dbHelper().usersData()) {
       if (userdata.getUsername().equals(name)) {
         pass = userdata.getPassword();
         break;
@@ -23,7 +23,7 @@ public class UserDataHelper {
 
   public String getUserEmail(String name) {
     String email = null;
-    for (UserData userdata : app.dbHelper().usersData()) {
+    for (User userdata : app.dbHelper().usersData()) {
       if (userdata.getUsername().equals(name)) {
         email = userdata.getEmail();
         break;

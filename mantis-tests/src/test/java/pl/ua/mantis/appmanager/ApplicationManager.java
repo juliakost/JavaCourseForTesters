@@ -123,12 +123,12 @@ public class ApplicationManager {
   }
 
 
-//  public DbHelper dbHelper() {
-//    if (dbHelper==null){
-//      dbHelper=new DbHelper(this);
-//    }
-//    return dbHelper;
-//  }
+  public DbHelper dbHelper() {
+    if (dbHelper==null){
+      dbHelper=new DbHelper(this);
+    }
+    return dbHelper;
+  }
 
-  public DbHelper dbHelper(){return dbHelper;}
+  //public DbHelper dbHelper(){return dbHelper;}
 }
