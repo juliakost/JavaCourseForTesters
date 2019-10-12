@@ -26,9 +26,11 @@ public class ChangePasswordTests extends TestBase {
     String user = app.dbHelper().usersData().get(0).getUsername();
     int numberUsers = app.dbHelper().usersData().size();
     if(user.equals("administrator") && numberUsers == 1){
-      System.out.println( "There is no User other than Admin");}
+      System.out.println( "There is no User other than Admin. New User will be added");
+      app.registration().start("non-admin","non-admin@localhost.domain");
+    }
     user = app.dbHelper().usersData().get(1).getUsername();
-    //app.mail().drainEmail(user, app.db().getUserPassword(user));
+    app.mail().drainEmail(user, app.db().getUserPassword(user));
     String newPassword = "passwordNew";
     app.sessionHelper().login("administrator", "root");
     app.changePass().resetPassword(user);
